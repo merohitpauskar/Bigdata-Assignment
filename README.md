@@ -1,2 +1,2 @@
 # Bigdata-Assignment
-This contains all the assignment to the iNeuron assignments.
+This contains all the solutions for the iNeuron assignments.
