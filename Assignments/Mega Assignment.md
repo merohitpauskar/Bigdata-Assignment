@@ -394,30 +394,136 @@ sol: a_dict = {'color': 'blue', 'fruit': 'apple', 'pet': 'dog'}
 
 Coding problems
 Q76. Write a Python program to find the factorial of a given number.
+sol: 
+def factorial(n):
+    if n==1 or n==0:
+        return 1
+    else:
+        return n*factorial(n-1)
+
+num=5
+x=factorial(num)
+print(x) 
+
 
 Q77. Write a Python program to calculate the simple interest. Formula to calculate simple interest is SI = (PRT)/100
+sol:
+def SI(p,r,t):
+  return (p*r*t)/100
+
 
 Q78. Write a Python program to calculate the compound interest. Formula of compound interest is A = P(1+ R/100)^t.
+sol:
+def CI(p,r,t):
+  return p*pow(1+(r/100),t)
 
 Q79. Write a Python program to check if a number is prime or not.
+sol:
+def IsPrime(n):
+  if n==1:
+    return False
+
+  for i in range(2,n):
+    flag=False
+    #print(i)
+    if n%i==0:
+        flag=True
+        return flag
+  if flag is False:
+    return flag
+
+print(IsPrime(11))
+>>True
 
 Q80. Write a Python program to check Armstrong Number.
+sol:
+num = int(input("Enter a number: "))
+sum = 0
+temp = num
+while temp > 0:
+   digit = temp % 10
+   sum += digit ** 3
+   temp //= 10
+if num == sum:
+   print(num,"is an Armstrong number")
+else:
+   print(num,"is not an Armstrong number")
 
 Q81. Write a Python program to find the n-th Fibonacci Number.
+sol: 
 
 Q82. Write a Python program to interchange the first and last element in a list.
+sol: 
+def swap(list):
+    a=list[0]
+    list[0]=list[-1]
+    list[-1]=a
+
+list=[1,2,3,4,5,6]
+swap(list)
+print(list)
 
 Q83. Write a Python program to swap two elements in a list.
+sol:
+def swapEle(list,p1,p2):
+    if p1 > (len(list)-1) or p2 > (len(list)-1):
+        return -1
+    
+    temp=list[p1]
+    list[p1]=list[p2]
+    list[p2]=temp
+
+list=[1,2,3,4,5,1,2,4]
+x=swapEle(list,14,4)
+print(x)
 
 Q84. Write a Python program to find N largest element from a list.
+sol: 
+def Nlargest(l,n):
+    li=set(l)
+    listt=list(li)
+    listt.sort()
+    if(n==1):
+        return listt[-1]
+    
+    return(listt[len(listt)-n])
+
+l=[89,89,454,89,454,67]
+print(Nlargest(l,2))
 
 Q85. Write a Python program to find cumulative sum of a list.
+sol: 
+def cummulitive(list):
+    sum=0
+    list2=[]
+    for i in list:
+        sum+=i
+        list2.append(sum)
+    return list2
+
+list=[11,12,23,34,45,45]  
+print(cummulitive(list))
 
 Q86. Write a Python program to check if a string is palindrome or not.
+sol:
+def pallindrome(string):
+    if string[::-1]==string:
+        return True
+    else:
+        return False
+string="lol"
+print(pallindrome(string))
 
 Q87. Write a Python program to remove i'th element from a string.
+sol:
+def removei(string,i):
+    a=string[:i]
+    b=string[i+1:]
+    return a+b
+
 
 Q88. Write a Python program to check if a substring is present in a given string.
+sol:
 
 Q89. Write a Python program to find words which are greater than given length k.
 
