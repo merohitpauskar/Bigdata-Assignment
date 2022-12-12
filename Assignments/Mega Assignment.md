@@ -524,29 +524,143 @@ def removei(string,i):
 
 Q88. Write a Python program to check if a substring is present in a given string.
 sol:
+MyString1 = "A geek in need is a geek indeed"
+ 
+if "need" in MyString1:
+    print("Yes! it is present in the string")
+else:
+    print("No! it is not present")
+
+    or
+
+string = "geeks for geeks"  
+substring = "geeks"  
+
+s = string.split()
+ 
+
+if substring in s:
+    print("yes")
+else:
+    print("no")
 
 Q89. Write a Python program to find words which are greater than given length k.
+sol:
+def Count(str,k):
+    s=str.split()
+    list_words=[]
+    for i in s:
+        length=len(i)
+        if(length>k):
+            list_words.append(i)
+    return list_words
 
-Q90. Write a Python program to extract unquire dictionary values.
+stringg="I am Rohit Pauskar. Working as a Business Analyst at Quantiphi Analytics"
+print(Count(stringg,5))
+
+Q90. Write a Python program to extract unique dictionary values.
+sol:
+def UniqV(dict):
+    v=dict.values()
+    sum=[]
+    for i in v:
+        sum+=i
+    u=set(sum)
+    return u
+
+dict1 = {'A' : [1, 3, 5, 4],
+             'B' : [4, 6, 8, 10],
+             'C' : [6, 12, 4 ,8],
+             'D' : [5, 7, 2]}
+print(UniqV(dict1))
 
 Q91. Write a Python program to merge two dictionary.
+sol:
+def MergeDict(dict1,dict2):
+    for k,v in dict2.items():
+        dict1[k]=v
+    
+    return dict1
+
+
+
+dict1 = {'A' : [1, 3, 5, 4],
+             'B' : [4, 6, 8, 10],
+             'C' : [6, 12, 4 ,8],
+             'D' : [5, 7, 2]
+             }
+
+dict2 = {'E' : [1, 3, 5, 4],
+             'F' : [4, 6, 8, 10],
+             'G' : [6, 12, 4 ,8],
+             'H' : [5, 7, 2]
+             }
+
+
+print(MergeDict(dict1,dict2))
 
 Q92. Write a Python program to convert a list of tuples into dictionary.
-
 Input : [('Sachin', 10), ('MSD', 7), ('Kohli', 18), ('Rohit', 45)]
 Output : {'Sachin': 10, 'MSD': 7, 'Kohli': 18, 'Rohit': 45}
+sol:
+def ToDict(list):
+    dict1={}
+    for i in list:
+        dict1[i[0]]=i[1]
+    return dict1
+
+l=[('Sachin', 10), ('MSD', 7), ('Kohli', 18), ('Rohit', 45)]
+d=ToDict(l)
+print(d)
+
 Q93. Write a Python program to create a list of tuples from given list having number and its cube in each tuple.
 
 Input: list = [9, 5, 6]
 Output: [(9, 729), (5, 125), (6, 216)]
+
+sol:
+list=[9, 5, 6]
+list2=[]
+for i in list:
+    t=(i,i*i*i)
+    list2.append(t)
+print(list2)
+
 Q94. Write a Python program to get all combinations of 2 tuples.
 
 Input : test_tuple1 = (7, 2), test_tuple2 = (7, 8)
 Output : [(7, 7), (7, 8), (2, 7), (2, 8), (7, 7), (7, 2), (8, 7), (8, 2)]
-Q95. Write a Python program to sort a list of tuples by second item.
+sol:
+def Combinations(t1,t2):
+    listc=[]
+    for i in t1:
+        t=(i,t2[0])
+        listc.append(t)
+        t=(i,t2[1])
+        listc.append(t)
+    
+    for i in t2:
+        t=(i,t1[0])
+        listc.append(t)
+        t=(i,t1[1])
+        listc.append(t)
+    
+    return listc
 
+test_tuple1 = (7, 2)
+test_tuple2 = (7, 8)
+print(Combinations(test_tuple1,test_tuple2))
+
+Q95. Write a Python program to sort a list of tuples by second item.
 Input : [('for', 24), ('Geeks', 8), ('Geeks', 30)] 
 Output : [('Geeks', 8), ('for', 24), ('Geeks', 30)]
+sol:
+def Sort(list):
+    list.sort(key=lambda x: x[1])
+    return list
+t=[('for', 24), ('Geeks', 8), ('Geeks', 30)] 
+print(Sort(t))
+
 Q96. Write a python program to print below pattern.
 
 * 
@@ -554,6 +668,11 @@ Q96. Write a python program to print below pattern.
 * * * 
 * * * * 
 * * * * * 
+
+sol:
+for i in range(0,5):
+    print('*'*(i+1))
+
 Q97. Write a python program to print below pattern.
 
     *
@@ -561,6 +680,16 @@ Q97. Write a python program to print below pattern.
   ***
  ****
 *****
+sol:
+def pattern2(n):
+    x=n
+    i=1
+    while n>0:
+        print(" "*(x-i),end='')
+        print('*'*i)
+        i+=1
+        n-=1
+
 Q98. Write a python program to print below pattern.
 
     * 
@@ -568,17 +697,46 @@ Q98. Write a python program to print below pattern.
   * * * 
  * * * * 
 * * * * * 
+sol:
+def pattern3(n):
+    x=(n-1)
+    for i in range(0,n):
+        print(" "*x,end='')
+        for j in range(0,i+1):
+            print("*",end="")
+            print(" ",end="")
+        print("")
+        x-=1
+pattern3(5)
+ 
 Q99. Write a python program to print below pattern.
-
 1 
 1 2 
 1 2 3 
 1 2 3 4 
 1 2 3 4 5
-Q100. Write a python program to print below pattern.
+sol:
+def patternN(n):
+    for i in range(1,n+1):
+        for j in range(0,i):
+            print(j+1,end=" ")
+        print("")
+patternN(5)
 
+
+
+Q100. Write a python program to print below pattern.
 A 
 B B 
 C C C 
 D D D D 
 E E E E E 
+sol:
+def patternN():
+    list=['A','B','C','D','E']
+    for i in range(1,6):
+        for j in range(0,i):
+            print(list[i-1],end=" ")
+        print("")
+patternN()
+
